@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* PRITHVI-NET Design System - Light Theme Only */
+    --background: 140 20% 98%;
+    --foreground: 200 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 200 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 25% 15%;
+
+    /* Primary - Deep Forest Green */
+    --primary: 160 45% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Soft Sky Blue */
+    --secondary: 200 30% 94%;
+    --secondary-foreground: 200 25% 20%;
+
+    /* Muted - Light Sage */
+    --muted: 140 15% 94%;
+    --muted-foreground: 200 15% 45%;
+
+    /* Accent - Earth Teal */
+    --accent: 175 35% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Status Colors */
+    --success: 145 60% 40%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --info: 200 80% 50%;
+    --info-foreground: 0 0% 100%;
+
+    /* AQI Colors */
+    --aqi-good: 145 60% 45%;
+    --aqi-moderate: 45 90% 50%;
+    --aqi-unhealthy-sensitive: 30 90% 50%;
+    --aqi-unhealthy: 15 85% 50%;
+    --aqi-very-unhealthy: 340 70% 45%;
+    --aqi-hazardous: 0 60% 40%;
+
+    --border: 200 20% 88%;
+    --input: 200 20% 88%;
+    --ring: 160 45% 30%;
+
+    --radius: 0px;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 200 25% 25%;
+    --sidebar-primary: 160 45% 30%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 140 20% 95%;
+    --sidebar-accent-foreground: 160 45% 25%;
+    --sidebar-border: 200 20% 90%;
+    --sidebar-ring: 160 45% 30%;
+
+    /* Chart Colors */
+    --chart-1: 160 45% 35%;
+    --chart-2: 175 40% 45%;
+    --chart-3: 200 60% 50%;
+    --chart-4: 145 50% 50%;
+    --chart-5: 38 80% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Rectangular button styles */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-6 py-3 font-medium transition-all duration-200 hover:opacity-90 active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground px-6 py-3 font-medium transition-all duration-200 hover:bg-secondary/80;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary px-6 py-3 font-medium transition-all duration-200 hover:bg-primary hover:text-primary-foreground;
+  }
+
+  /* Card styles */
+  .card-elevated {
+    @apply bg-card shadow-lg border border-border p-6;
+  }
+
+  .card-flat {
+    @apply bg-card border border-border p-6;
+  }
+
+  /* KPI Card */
+  .kpi-card {
+    @apply bg-card border border-border p-5 flex flex-col gap-2;
+  }
+
+  /* Status badges */
+  .badge-success {
+    @apply bg-[hsl(var(--success))] text-[hsl(var(--success-foreground))] px-3 py-1 text-sm font-medium;
+  }
+
+  .badge-warning {
+    @apply bg-[hsl(var(--warning))] text-[hsl(var(--warning-foreground))] px-3 py-1 text-sm font-medium;
+  }
+
+  .badge-error {
+    @apply bg-destructive text-destructive-foreground px-3 py-1 text-sm font-medium;
+  }
+
+  .badge-info {
+    @apply bg-[hsl(var(--info))] text-[hsl(var(--info-foreground))] px-3 py-1 text-sm font-medium;
+  }
+
+  /* AQI Status badges */
+  .aqi-good {
+    @apply bg-[hsl(var(--aqi-good))] text-white;
+  }
+
+  .aqi-moderate {
+    @apply bg-[hsl(var(--aqi-moderate))] text-white;
+  }
+
+  .aqi-unhealthy-sensitive {
+    @apply bg-[hsl(var(--aqi-unhealthy-sensitive))] text-white;
+  }
+
+  .aqi-unhealthy {
+    @apply bg-[hsl(var(--aqi-unhealthy))] text-white;
+  }
+
+  .aqi-very-unhealthy {
+    @apply bg-[hsl(var(--aqi-very-unhealthy))] text-white;
+  }
+
+  .aqi-hazardous {
+    @apply bg-[hsl(var(--aqi-hazardous))] text-white;
+  }
+
+  /* Sidebar styles */
+  .sidebar-item {
+    @apply flex items-center gap-3 px-4 py-3 text-sidebar-foreground transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground;
+  }
+
+  .sidebar-item-active {
+    @apply bg-sidebar-accent text-sidebar-primary font-medium border-l-4 border-sidebar-primary;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    @apply h-2 bg-muted overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full transition-all duration-500;
+  }
+}
+
+/* Leaflet map overrides */
+.leaflet-container {
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  z-index: 1;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0 !important;
+}
+
+.leaflet-control-zoom a {
+  border-radius: 0 !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
